@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="150" height="13" tilewidth="24" tileheight="24" nextobjectid="1">
+ <tileset firstgid="1" name="terrain" tilewidth="24" tileheight="24">
+  <image source="terrain.png" width="384" height="24"/>
+ </tileset>
+ <tileset firstgid="17" name="object" tilewidth="24" tileheight="24">
+  <image source="object.png" width="120" height="24"/>
+ </tileset>
+ <layer name="terrain" width="150" height="13">
+  <data encoding="base64" compression="zlib">
+   eJztmUEKwCAMBKPi/7/ci4VAKaZimpjswOKhF1eHglqJqAZKcTAH5BtlxDOFzpjnG7v37G/gFdDCu/srwCt7InoF7IFXQANLr+B0XKy9yuhWhs7WHbO5laWvdcfZOt/fO8vJ5zx49UTj7C7xqo30McIr/8w68jtejXsh6f+qsUTwKrpbK+8+eH9DJLkANHEC9g==
+  </data>
+ </layer>
+ <layer name="object" width="150" height="13">
+  <data encoding="base64" compression="zlib">
+   eJzt1lEKgCAQRdHZgu5/sRH4UyBmvVFz7gHpRyqHC2UGYKRcFqBEV1qprJoo8+49Z5S5fEFXfefM1t6fbldc7dDVkzOou8I6Wt/kt9RdJfN715HPiGLmHGd1VbsHXen8pauTsiva2Rf/S/BAV/BAV8BaDjOZBK0=
+  </data>
+ </layer>
+</map>
