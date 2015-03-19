@@ -27,7 +27,7 @@ MainScene::~MainScene()
     CC_SAFE_RELEASE_NULL(_stage);
 }
 
-Scene* MainScene::createScene()
+Scene* MainScene::createSceneWithLevel(int level)
 {
     // 物理エンジンを有効にしたシーンを作成する
     auto scene = Scene::createWithPhysics();
@@ -45,19 +45,26 @@ Scene* MainScene::createScene()
     // 物理空間のスピードを設定する
     world->setSpeed(6.0);
     
-    auto layer = MainScene::create();
+//    auto layer = MainScene::create();
+    
+    auto layer = new MainScene();
+    if ( layer && layer->initWithLevel(level)) {
+        layer->autorelease();
+    } else {
+        CC_SAFE_DELETE(layer);
+    }
     scene->addChild(layer);
     
     return scene;
 }
 
-bool MainScene::init()
+bool MainScene::initWithLevel(int level)
 {
     if (!Layer::init()) {
         return false;
     }
     
-    auto stage = Stage::create();
+    auto stage = Stage::createWithLabel(level);
     this->addChild(stage);
     this->setStage(stage);
     

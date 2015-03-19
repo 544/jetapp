@@ -17,7 +17,7 @@ class Stage :public cocos2d::Layer
 protected:
     Stage();
     virtual ~Stage();
-    bool init() override;
+    bool initWithLabel(int level);
 
 public:
     // タイルの種類
@@ -30,13 +30,19 @@ public:
     
     void update(float dt) override;
     
+    // ステージのレベル
+    CC_SYNTHESIZE_READONLY(int, _level, Level);
+    
     // タイルマップ
     CC_SYNTHESIZE_RETAIN(cocos2d::TMXTiledMap*, _tiledMap, TiledMap);
     
     // プレイヤー
     CC_SYNTHESIZE_RETAIN(Player*, _palyer, Player);
-
-    CREATE_FUNC(Stage);
+    
+    /**
+     * ステージ番号からステージを生成する。
+     */
+    static Stage * createWithLabel(int level);
 
 private:
     /**

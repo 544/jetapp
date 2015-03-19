@@ -3,6 +3,8 @@
 
 USING_NS_CC;
 
+const int INIT_LEVEL = 1;
+
 AppDelegate::AppDelegate() {
 
 }
@@ -44,7 +46,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     FileUtils::getInstance()->addSearchPath("image");
 
     // create a scene. it's an autorelease object
-    auto scene = MainScene::createScene();
+    auto scene = MainScene::createSceneWithLevel(INIT_LEVEL);
 
     // run
     director->runWithScene(scene);

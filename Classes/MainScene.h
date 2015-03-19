@@ -17,10 +17,16 @@ class MainScene :public cocos2d::Layer
 protected:
     MainScene();
     virtual ~MainScene();
-    bool init() override;
+    bool initWithLevel(int level);
 
 public:
-    static cocos2d::Scene* createScene();
+    
+    /**
+     * 任意の番号のステージでシーンを作成する。
+     */
+    static cocos2d::Scene* createSceneWithLevel(int level);
+    
+    
     void update(float dt) override;
     
     // ステージ
@@ -29,7 +35,6 @@ public:
     // 画面がタップされているかどうか
     CC_SYNTHESIZE(bool, _isPress, IsPress);
     
-    CREATE_FUNC(MainScene);
 };
 
 #endif /* defined(__Jet__MainScene__) */

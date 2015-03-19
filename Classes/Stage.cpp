@@ -10,9 +10,13 @@
 
 USING_NS_CC;
 
+// ステージファイルのフォーマット
+const char* STAGE_FILE_FORMAT = "map/stage%d.tmx";
+
 Stage::Stage()
 :_tiledMap(nullptr)
 ,_palyer(nullptr)
+,_level(0)
 {
 }
 
@@ -22,14 +26,18 @@ Stage::~Stage()
     CC_SAFE_RELEASE(_palyer);
 }
 
-bool Stage::init()
+bool Stage::initWithLabel(int level)
 {
     if (!Layer::init()) {
         return false;
     }
     
+    // ステージ番号を格納
+    _level = level;
+    
     // マップファイルからノードを作成する
-    auto map = TMXTiledMap::create("map/stage1.tmx");
+    auto stageFile = StringUtils::format(STAGE_FILE_FORMAT, level);
+    auto map = TMXTiledMap::create(stageFile);
     this->addChild(map);
     this->setTiledMap(map);
     
@@ -71,6 +79,17 @@ bool Stage::init()
 void Stage::update(float dt)
 {
     
+}
+
+Stage* Stage::createWithLabel(int level)
+{
+    Stage *ret = new Stage();
+    if (ret->initWithLabel(level)) {
+        ret->autorelease();
+        return ret;
+    }
+    CC_SAFE_DELETE(ret);
+    return nullptr;
 }
 
 Sprite* Stage::addPhysicsBody(cocos2d::TMXLayer *layer, cocos2d::Vec2 &coordinate)
