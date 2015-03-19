@@ -2,13 +2,118 @@
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="150" height="13" tilewidth="24" tileheight="24" nextobjectid="1">
  <tileset firstgid="1" name="terrain" tilewidth="24" tileheight="24">
   <image source="terrain.png" width="384" height="24"/>
+  <tile id="0">
+   <properties>
+    <property name="category" value="1"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="category" value="1"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="category" value="1"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="category" value="1"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="category" value="1"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="category" value="1"/>
+   </properties>
+  </tile>
+  <tile id="6">
+   <properties>
+    <property name="category" value="1"/>
+   </properties>
+  </tile>
+  <tile id="7">
+   <properties>
+    <property name="category" value="1"/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="category" value="1"/>
+   </properties>
+  </tile>
+  <tile id="9">
+   <properties>
+    <property name="category" value="1"/>
+   </properties>
+  </tile>
+  <tile id="10">
+   <properties>
+    <property name="category" value="1"/>
+   </properties>
+  </tile>
+  <tile id="11">
+   <properties>
+    <property name="category" value="1"/>
+   </properties>
+  </tile>
+  <tile id="12">
+   <properties>
+    <property name="category" value="1"/>
+   </properties>
+  </tile>
+  <tile id="13">
+   <properties>
+    <property name="category" value="1"/>
+   </properties>
+  </tile>
+  <tile id="14">
+   <properties>
+    <property name="category" value="1"/>
+   </properties>
+  </tile>
+  <tile id="15">
+   <properties>
+    <property name="category" value="1"/>
+   </properties>
+  </tile>
  </tileset>
  <tileset firstgid="17" name="object" tilewidth="24" tileheight="24">
   <image source="object.png" width="120" height="24"/>
+  <tile id="0">
+   <properties>
+    <property name="category" value="4"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="category" value="4"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="category" value="4"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="category" value="8"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="category" value="8"/>
+   </properties>
+  </tile>
  </tileset>
  <layer name="terrain" width="150" height="13">
   <data encoding="base64" compression="zlib">
-   eJztmUEKwCAMBGPF/3+5FwtCKVoxJuoMLB68GB2E6CUi10YJDtZA/hFyPBNkjXV+MfrMZoNXoIV393vAK3t29ArswSvQAK9AA7yazwl7bl3jCn3zSE6p17rG2j4/86nIyn0eXr3R6N1bvIo5KY945Z9ajeUbr8a7UOt9FYvs4NXubvX8+/D/RlpyA94qAvA=
+   eJztmMEKwCAMQ6v//9G77uSqNO1q8iBHxaQBxWFmQ5KCtcPJmmy83iLyQBA9s2zYeyVw3Ji9elWPshcI1CuBQL0SCNSrfBgyr/bI9r6exuG32uNXrzr+36zofn4vOx4RmbD2qrMHDyczjcyEsVcMd+HbJ0ro/TM1F6o+29/0ANF2AY4=
   </data>
  </layer>
  <layer name="object" width="150" height="13">

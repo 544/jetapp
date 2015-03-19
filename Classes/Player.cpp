@@ -52,6 +52,14 @@ bool Player::init()
     
     // 剛体の回転を無効にする
     body->setRotationEnable(false);
+    
+    // カテゴリをプレイヤーに設定する。
+    body->setCategoryBitmask(static_cast<int>(Stage::TileType::PLAYER));
+    // 壁とのみ衝突
+    body->setCollisionBitmask(static_cast<int>(Stage::TileType::WALL));
+    // 全ての剛体と衝突判定を行う
+    body->setContactTestBitmask(INT_MAX);
+    
     this->setPhysicsBody(body);
     
     // 初期速度を設定する。

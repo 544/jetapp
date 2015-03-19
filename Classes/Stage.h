@@ -20,6 +20,14 @@ protected:
     bool init() override;
 
 public:
+    // タイルの種類
+    enum class TileType {
+        WALL = 1 << 0,
+        PLAYER = 1 << 1,
+        ENEMY = 1 << 2,
+        COIN = 1 << 3
+    };
+    
     void update(float dt) override;
     
     // タイルマップ

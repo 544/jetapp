@@ -75,7 +75,19 @@ bool MainScene::init()
     };
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
     
+    // 物体が接触したことを検知するEventListener
+    auto contactListener = EventListenerPhysicsContact::create();
+    contactListener->onContactBegin = [] (PhysicsContact& ccontact) {
+        log("hit");
+        return true;
+    };
+    this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
+    
+    
     this->scheduleUpdate();
+    
+    
+    
     
     return true;
 }
