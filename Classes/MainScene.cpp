@@ -84,7 +84,19 @@ bool MainScene::initWithLevel(int level)
     
     // 物体が接触したことを検知するEventListener
     auto contactListener = EventListenerPhysicsContact::create();
-    contactListener->onContactBegin = [] (PhysicsContact& ccontact) {
+    contactListener->onContactBegin = [this] (PhysicsContact& contact) {
+        
+        // 二つの剛体のうち、プレイヤーではない方を取り出す。
+        auto otherShape = contact.getShapeA()->getBody() == _stage->getPlayer()->getPhysicsBody()
+        ? contact.getShapeB() : contact.getShapeA();
+        
+        auto body = otherShape->getBody();
+        auto category = body->getCategoryBitmask();
+        
+        if (category & static_cast<int>(Stage::TileType::ENEMY)) {
+            this->onGameOver();
+        }
+        
         log("hit");
         return true;
     };
@@ -101,9 +113,42 @@ bool MainScene::initWithLevel(int level)
 
 void MainScene::update(float dt)
 {
+    // タップで上昇
     if (this->getIsPress()) {
         // プレイヤーに上方向の推進力を与える。
         _stage->getPlayer()->getPhysicsBody()->applyImpulse(IMPULSE_ACCELERATION);
     }
+    
+    // 画面外に出たら終了
+    auto winSize = Director::getInstance()->getWinSize();
+    auto position = _stage->getPlayer()->getPosition();
+    const auto margin = 50;
+    
+    
+}
+
+void MainScene::onGameOver()
+{
+    // プレイヤーをステージから削除する
+    _stage->getPlayer()->removeFromParent();
+    
+    // 画面サイズを取り出す
+    auto winSize = Director::getInstance()->getWinSize();
+    
+    // GAME OVERの表示
+    auto gameover = Sprite::create("gameover.png");
+    gameover->setPosition(Vec2(winSize.width/2, winSize.height/1.5));
+    this->addChild(gameover);
+    
+    // もう一度遊ぶメニュー
+    auto menuItem = MenuItemImage::create("replay.png", "replay_pressed.png", [this](Ref *sender){
+        auto scene = MainScene::createSceneWithLevel(_stage->getLevel());
+        auto transition = TransitionFade::create(1.0, scene);
+        Director::getInstance()->replaceScene(transition);
+    });
+    auto menu = Menu::create(menuItem, nullptr);
+    menu->setPosition(Vec2(winSize.width/2.0, winSize.height/3));
+    this->addChild(menu);
+    
     
 }

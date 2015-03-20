@@ -34,6 +34,9 @@ public:
     
     // 画面がタップされているかどうか
     CC_SYNTHESIZE(bool, _isPress, IsPress);
+
+private:
+    void onGameOver();
     
 };
 
