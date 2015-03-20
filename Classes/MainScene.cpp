@@ -124,6 +124,13 @@ void MainScene::update(float dt)
     auto position = _stage->getPlayer()->getPosition();
     const auto margin = 50;
     
+    if (position.y < - margin || position.y >= winSize.height + margin) {
+        // 何度を呼ばれることを防ぐため、プレイヤーがステージにいなければ呼ばれない。
+        if (_stage->getPlayer()->getParent() != nullptr) {
+            this->onGameOver();
+        }
+    }
+    
     
 }
 
