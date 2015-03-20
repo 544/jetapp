@@ -24,8 +24,8 @@ public:
     enum class TileType {
         WALL = 1 << 0,
         PLAYER = 1 << 1,
-        ENEMY = 1 << 2,
-        COIN = 1 << 3
+        COIN = 1 << 2,
+        ENEMY = 1 << 3
     };
     
     void update(float dt) override;

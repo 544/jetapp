@@ -34,6 +34,12 @@ public:
     
     // 画面がタップされているかどうか
     CC_SYNTHESIZE(bool, _isPress, IsPress);
+    
+    // 現在の取得コイン数
+    CC_SYNTHESIZE(int, _coin, Coin);
+    // コイン表示用のラベル
+    CC_SYNTHESIZE_RETAIN(cocos2d::Label* , _coinLabel, CoinLabel);
+    
 
 private:
     void onGameOver();

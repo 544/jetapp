@@ -19,12 +19,15 @@ const Vec2 IMPULSE_ACCELERATION = Vec2(0, 180);
 MainScene::MainScene()
 :_stage(nullptr)
 ,_isPress(false)
+,_coin(0)
+,_coinLabel(nullptr)
 {
 }
 
 MainScene::~MainScene()
 {
     CC_SAFE_RELEASE_NULL(_stage);
+    CC_SAFE_RELEASE_NULL(_coinLabel);
 }
 
 Scene* MainScene::createSceneWithLevel(int level)
@@ -64,6 +67,8 @@ bool MainScene::initWithLevel(int level)
         return false;
     }
     
+    auto winSize = Director::getInstance()->getWinSize();
+    
     auto stage = Stage::createWithLabel(level);
     this->addChild(stage);
     this->setStage(stage);
@@ -94,19 +99,28 @@ bool MainScene::initWithLevel(int level)
         auto category = body->getCategoryBitmask();
         
         if (category & static_cast<int>(Stage::TileType::ENEMY)) {
+            // 敵
             this->onGameOver();
+        } else if (category & static_cast<int>(Stage::TileType::COIN)) {
+            // コイン
+            body->getNode()->removeFromParent();
+            _coin += 1;
         }
         
         log("hit");
         return true;
     };
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
+
+    // コイン枚数の表示
+    auto label = Label::createWithCharMap("numbers.png", 16, 18, '0');
+    this->addChild(label);
+    label->setPosition(Vec2(200, winSize.height - 10));
+    label->enableShadow();
+    this->setCoinLabel(label);
     
     
     this->scheduleUpdate();
-    
-    
-    
     
     return true;
 }
@@ -130,6 +144,9 @@ void MainScene::update(float dt)
             this->onGameOver();
         }
     }
+    
+    // ラベル再描画
+    this->getCoinLabel()->setString(StringUtils::toString(_coin));
     
     
 }
