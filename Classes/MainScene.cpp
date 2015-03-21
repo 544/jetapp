@@ -174,5 +174,10 @@ void MainScene::onGameOver()
     menu->setPosition(Vec2(winSize.width/2.0, winSize.height/3));
     this->addChild(menu);
     
+    // パーティクル表示
+    auto explosion = ParticleExplosion::create();
+    explosion->setPosition(_stage->getPlayer()->getPosition());
+    _stage->addChild(explosion);
+    
     
 }
